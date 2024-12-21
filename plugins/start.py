@@ -83,6 +83,8 @@ async def start_command(client: Client, message: Message):
                 await asyncio.sleep(e.x)
                 await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
             except:
+                await asyncio.sleep(10)
+                await caption.delete()
                 pass
                 await asyncio.sleep(10)
                 await caption.delete()
