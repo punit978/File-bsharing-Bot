@@ -77,18 +77,19 @@ async def start_command(client: Client, message: Message):
                 reply_markup = None
 
             try:
-                m = await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
+                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
                 await asyncio.sleep(0.5)
                 
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-              n = await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
+              await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
 
             except:
                 pass
-              await asyncio.sleep(10)
-                await m.delete()  
-            await n.delete()
+             
+            await asyncio.sleep(10)
+        await msg.copy.delete()  
+  
         return
     else:
         reply_markup = InlineKeyboardMarkup(
